@@ -6,6 +6,12 @@ class ProductsTest < ApplicationSystemTestCase
   #
   #   assert_selector "h1", text: "Product"
   # end
+  test "visiting the index" do
+    visit root_url
+    assert_selector "h1", text: "Awesome Products"
+    assert_selector ".card-product", count: Product.count
+  end
+
   test "lets a signed in user create a new product" do
     login_as users(:george)
     visit "/products/new"
